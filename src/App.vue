@@ -2,6 +2,7 @@
 import { ref, computed } from "vue";
 import Header from "./components/Header.vue";
 import Button from "./components/Button.vue";
+import { calculateTotalPaid } from "./helpers";
 
 const quantity = ref(10000);
 const months = ref(24);
