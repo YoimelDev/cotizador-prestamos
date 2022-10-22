@@ -25,6 +25,10 @@ watch([quantity, months], () => {
   total.value = calculateTotalPaid(quantity.value, months.value);
 });
 
+const monthlyPayment = computed(() => {
+  return total.value / months.value;
+});
+
 const handleChandeDecrement = () => {
   const value = quantity.value - STEP;
   if (value < MIN) {
@@ -105,7 +109,9 @@ const handleChandeIncrement = () => {
       <p class="text-xl text-gray-500 text-center font-bold">
         Total a pagar: {{ formatMoney(total) }}
       </p>
-      <p class="text-xl text-gray-500 text-center font-bold">Mensuales:</p>
+      <p class="text-xl text-gray-500 text-center font-bold">
+        Mensuales: {{ formatMoney(monthlyPayment) }}
+      </p>
     </section>
 
     <p v-else class="text-center">Añade una cantidad y un plazo a pagar</p>
