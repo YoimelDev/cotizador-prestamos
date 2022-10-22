@@ -1,12 +1,12 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import Header from "./components/Header.vue";
 import Button from "./components/Button.vue";
 import { calculateTotalPaid } from "./helpers";
 
 const quantity = ref(10000);
 const months = ref(6);
-const total = ref(calculateTotalPaid(quantity.value, months.value));
+const total = ref(0);
 
 const MIN = 0;
 const MAX = 20000;
@@ -20,6 +20,10 @@ const formatMoney = (value) => {
 
   return formatter.format(value);
 };
+
+watch([quantity, months], () => {
+  total.value = calculateTotalPaid(quantity.value, months.value);
+});
 
 const handleChandeDecrement = () => {
   const value = quantity.value - STEP;
@@ -90,7 +94,7 @@ const handleChandeIncrement = () => {
       </select>
     </div>
 
-    <section class="my-5 space-y-3 bg-gray-50 p-5">
+    <section v-if="total > 0" class="my-5 space-y-3 bg-gray-50 p-5">
       <h2 class="text-2xl font-extrabold text-gray-500 text-center">
         Resumen <span class="text-indigo-600">de pagos</span>
       </h2>
@@ -103,6 +107,8 @@ const handleChandeIncrement = () => {
       </p>
       <p class="text-xl text-gray-500 text-center font-bold">Mensuales:</p>
     </section>
+
+    <p v-else class="text-center">Añade una cantidad y un plazo a pagar</p>
   </div>
 </template>
 
