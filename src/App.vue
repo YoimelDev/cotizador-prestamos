@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import Header from "./components/Header.vue";
+import Button from "./components/Button.vue";
 
 const quantity = ref(10000);
 const MIN = 0;
@@ -42,46 +43,9 @@ const handleChandeIncrement = () => {
     <Header />
 
     <div class="flex justify-between mt-10">
-      <button
-        class="
-          h-10
-          w-10
-          flex
-          items-center
-          justify-center
-          font-bold
-          bg-lime-500
-          rounded-full
-          hover:outline-none
-          hover:ring-2
-          hover:ring-offset-2
-          hover:ring-lime-500
-          text-white text-2xl
-        "
-        @click="handleChandeDecrement"
-      >
-        -
-      </button>
-      <button
-        class="
-          h-10
-          w-10
-          flex
-          items-center
-          justify-center
-          font-bold
-          bg-lime-500
-          rounded-full
-          hover:outline-none
-          hover:ring-2
-          hover:ring-offset-2
-          hover:ring-lime-500
-          text-white text-2xl
-        "
-        @click="handleChandeIncrement"
-      >
-        +
-      </button>
+      <Button :operetor="'-'" @fn="handleChandeDecrement" />
+
+      <Button :operetor="'+'" @fn="handleChandeIncrement" />
     </div>
 
     <div class="my-5">
