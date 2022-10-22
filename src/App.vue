@@ -15,11 +15,74 @@ const formatMoney = computed(() => {
 
   return formatter.format(quantity.value);
 });
+
+const handleChandeDecrement = () => {
+  const value = quantity.value - STEP;
+  if (value < MIN) {
+    alert("Cantidad no valid");
+    return;
+  }
+
+  quantity.value = value;
+};
+
+const handleChandeIncrement = () => {
+  const value = quantity.value + STEP;
+  if (value > MAX) {
+    alert("Cantidad no valid");
+    return;
+  }
+
+  quantity.value = value;
+};
 </script>
 
 <template>
   <div class="my-20 p-10 max-w-lg mx-auto bg-white shadow">
     <Header />
+
+    <div class="flex justify-between mt-10">
+      <button
+        class="
+          h-10
+          w-10
+          flex
+          items-center
+          justify-center
+          font-bold
+          bg-lime-500
+          rounded-full
+          hover:outline-none
+          hover:ring-2
+          hover:ring-offset-2
+          hover:ring-lime-500
+          text-white text-2xl
+        "
+        @click="handleChandeDecrement"
+      >
+        -
+      </button>
+      <button
+        class="
+          h-10
+          w-10
+          flex
+          items-center
+          justify-center
+          font-bold
+          bg-lime-500
+          rounded-full
+          hover:outline-none
+          hover:ring-2
+          hover:ring-offset-2
+          hover:ring-lime-500
+          text-white text-2xl
+        "
+        @click="handleChandeIncrement"
+      >
+        +
+      </button>
+    </div>
 
     <div class="my-5">
       <input
