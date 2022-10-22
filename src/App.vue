@@ -4,6 +4,7 @@ import Header from "./components/Header.vue";
 import Button from "./components/Button.vue";
 
 const quantity = ref(10000);
+const months = ref(24);
 const MIN = 0;
 const MAX = 20000;
 const STEP = 100;
@@ -61,6 +62,29 @@ const handleChandeIncrement = () => {
       <p class="text-center my-10 text-5xl font-extrabold text-indigo-600">
         {{ formatMoney }}
       </p>
+
+      <h2 class="text-2xl font-extrabold text-gray-500 text-center">
+        Elige un <span class="text-indigo-600">Plazo</span> a pagar
+      </h2>
+
+      <select
+        class="
+          w-full
+          p-2
+          mt-5
+          bg-white
+          border border-gray-300
+          rounded-lg
+          text-center text-xl
+          font-bold
+          text-gray-600
+        "
+        v-model.number="months"
+      >
+        <option value="6">6 Meses</option>
+        <option value="12">12 Meses</option>
+        <option value="24">24 Meses</option>
+      </select>
     </div>
   </div>
 </template>
