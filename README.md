@@ -1,7 +1,22 @@
-# Vue 3 + Vite
+# Cotizador de Prestamos
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## ✍🏻 Description
 
-## Recommended IDE Setup
+Project developed with Vuejs and Vite.
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+## :computer: Commands
+
+- npm install
+- npm run dev
+
+## 🎨 Preview
+
+You can see the result here → [Cotizador de Prestamos ]()
+
+## :computer: Technologies
+
+- Npm
+- Vuejs
+- Composition API
+- TailwindCss
+- Vite
