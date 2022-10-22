@@ -5,19 +5,21 @@ import Button from "./components/Button.vue";
 import { calculateTotalPaid } from "./helpers";
 
 const quantity = ref(10000);
-const months = ref(24);
+const months = ref(6);
+const total = ref(calculateTotalPaid(quantity.value, months.value));
+
 const MIN = 0;
 const MAX = 20000;
 const STEP = 100;
 
-const formatMoney = computed(() => {
+const formatMoney = (value) => {
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   });
 
-  return formatter.format(quantity.value);
-});
+  return formatter.format(value);
+};
 
 const handleChandeDecrement = () => {
   const value = quantity.value - STEP;
@@ -61,7 +63,7 @@ const handleChandeIncrement = () => {
       />
 
       <p class="text-center my-10 text-5xl font-extrabold text-indigo-600">
-        {{ formatMoney }}
+        {{ formatMoney(quantity) }}
       </p>
 
       <h2 class="text-2xl font-extrabold text-gray-500 text-center">
@@ -96,7 +98,9 @@ const handleChandeIncrement = () => {
       <p class="text-xl text-gray-500 text-center font-bold">
         {{ months }} Meses
       </p>
-      <p class="text-xl text-gray-500 text-center font-bold">Total a pagar:</p>
+      <p class="text-xl text-gray-500 text-center font-bold">
+        Total a pagar: {{ formatMoney(total) }}
+      </p>
       <p class="text-xl text-gray-500 text-center font-bold">Mensuales:</p>
     </section>
   </div>
